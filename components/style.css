@@ -1,0 +1,24 @@
+/* Focus 공통 css */
+.boder-focus {
+  @apply focus:duration-300 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-sky-500;
+}
+
+/* button Component css */
+.custom-button {
+  @apply shadow-md bg-sky-300 hover:bg-sky-400 duration-500 px-8 py-2 rounded-lg;
+}
+
+/* input Component css */
+.custom-input {
+  @apply border rounded-lg py-2 px-3 boder-focus;
+}
+
+/* selectBox_button Component css */
+.custom-selectbox-button {
+  @apply relative  cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md;
+}
+
+/* selectBox_options Component css */
+.custom-selectbox-option {
+  @apply absolute mt-1 max-h-60 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm;
+}

@@ -1,0 +1,7 @@
+.widget {
+  @apply flex flex-col px-10;
+}
+
+.widget div {
+  @apply py-5;
+}
