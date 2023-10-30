@@ -1,3 +1,4 @@
+"use client";
 import { SelcetBoxProps } from "@/types";
 import "./style.css";
 import { Fragment, useState } from "react";
