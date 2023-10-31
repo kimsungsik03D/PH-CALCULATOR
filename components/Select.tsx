@@ -20,7 +20,7 @@ const Selcet = ({ customWidth = "", options = [] }: SelcetBoxProps) => {
 
   return (
     <Listbox value={selected} onChange={setSelected}>
-      <div className="relative mt-1">
+      <div className="relative my-auto">
         <Listbox.Button
           onClick={() => {
             setIsOpen(!isOpen);

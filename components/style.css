@@ -10,12 +10,12 @@
 
 /* input Component css */
 .custom-input {
-  @apply border rounded-lg py-2 px-3 boder-focus;
+  @apply border rounded-lg py-2 px-3 boder-focus shadow-md my-auto;
 }
 
 /* selectBox_button Component css */
 .custom-selectbox-button {
-  @apply relative  cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md;
+  @apply relative cursor-default rounded-lg bg-white border py-2 pl-3 pr-10 text-left shadow-md;
 }
 
 /* selectBox_options Component css */

@@ -16,6 +16,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   labelClass?: string;
+  inputWidth?: string;
   onValue?: (e: ChangeEvent<HTMLInputElement>) => void;
   // onValue?: (enteredNum: string) => void;
 }

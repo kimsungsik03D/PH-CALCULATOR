@@ -3,7 +3,13 @@ import { InputProps } from "@/types";
 import { ChangeEvent, useState, useRef } from "react";
 import "./style.css";
 
-const Input = ({ label, labelClass, onValue, ...props }: InputProps) => {
+const Input = ({
+  label,
+  labelClass,
+  inputWidth,
+  onValue,
+  ...props
+}: InputProps) => {
   const [enteredNum, setEnterdNum] = useState<string>("");
 
   // onInput Func
@@ -44,9 +50,10 @@ const Input = ({ label, labelClass, onValue, ...props }: InputProps) => {
       <label className={`${labelClass}`}>
         {label}
         <input
-          className={`custom-input ${
+          className={`custom-input ${inputWidth ? inputWidth : ""}${
             props.type == "current" ? "text-right" : ""
-          }`}
+          }
+        `}
           type={props.type && "text"}
           {...props}
           value={enteredNum}
