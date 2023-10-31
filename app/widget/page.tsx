@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Input, SelectBox, Selcet } from "@/components";
+import { Button, Input, SelectBox, Select } from "@/components";
 import { ChangeEvent, useState } from "react";
 import "./style.css";
 
@@ -41,7 +41,7 @@ const page = () => {
           <Input label="기본 input : " type="text" onValue={onValue} />
         </div>
         <div>
-          <Selcet options={options} />
+          <Select options={options} />
         </div>
       </div>
     </div>
