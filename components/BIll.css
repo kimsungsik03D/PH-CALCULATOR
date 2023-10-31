@@ -1,0 +1,67 @@
+hr.hr-dashed {
+  @apply border-2 border-dashed mb-1;
+}
+/* Bill content */
+.bill {
+  @apply flex flex-col border border-lime-400 rounded-lg h-max px-5 shadow-md pb-8 my-auto;
+}
+
+/* Bill 최상단 제목 */
+.bill-category {
+  @apply text-center;
+}
+.bill-category h3 {
+  @apply font-semibold text-2xl py-5;
+}
+/* Bill 최상단 제목 */
+
+/* Bill 상단 자급제, 통신사  */
+.bill-type {
+  @apply flex justify-around mb-5;
+}
+/* Bill 상단 자급제, 통신사  */
+
+/* Bill 기기 정보란 */
+.bill-device {
+  @apply flex flex-col mb-5 mx-2;
+}
+.bill-device-selectbox {
+  @apply flex justify-between mb-3;
+}
+.bill-device-price {
+  @apply flex justify-between;
+}
+/* Bill 기기 정보란 */
+
+/* Bill 할인정보란 */
+.bill-sale {
+  @apply py-1 font-medium text-lg mx-2;
+}
+.bill-sale-title {
+  @apply flex justify-around my-1;
+}
+.bill-sale-detail {
+  @apply mx-2;
+}
+.bill-sale-detail-items {
+  @apply flex justify-between mt-1 mb-2;
+}
+/* Bill 할인정보란 */
+
+/* Bill 총 금액란 */
+.bill-total {
+  @apply mx-2 mt-1 mb-9;
+}
+.bill-sale-total {
+  @apply flex justify-between mb-1;
+}
+.bill-total-price {
+  @apply flex justify-between text-2xl font-bold;
+}
+/* Bill 총 금액란 */
+
+/* Bill 음역 Text란 */
+.bill-shadow-text {
+  @apply w-full mx-auto text-center text-slate-300;
+}
+/* Bill 총 금액란 */
