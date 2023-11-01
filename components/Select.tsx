@@ -1,5 +1,5 @@
 "use client";
-import { SelcetBoxProps } from "@/types";
+import { SelcetBoxProps, SelcetBox } from "@/types";
 import "./style.css";
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
@@ -11,15 +11,19 @@ import {
 } from "@heroicons/react/20/solid";
 
 const Selcet = ({ customWidth = "", options = [] }: SelcetBoxProps) => {
-  const [selected, setSelected] = useState(options[0]);
+  const [selected, setSelected] = useState<SelcetBox | null>();
   const [isOpen, setIsOpen] = useState(false);
 
-  // const onChange = (e: any) => {
-  //   console.log(e);
-  // };
+  const onChanheHandler = (value: SelcetBox | null) => {
+    setSelected(value);
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <Listbox value={selected} onChange={setSelected}>
+    <Listbox
+      value={selected}
+      onChange={(value: SelcetBox | null) => onChanheHandler(value)}
+    >
       <div className="relative my-auto">
         <Listbox.Button
           onClick={() => {
@@ -27,7 +31,14 @@ const Selcet = ({ customWidth = "", options = [] }: SelcetBoxProps) => {
           }}
           className={`custom-selectbox-button boder-focus ${customWidth}`}
         >
-          <span className="block truncate">{selected.name}</span>
+          <span
+            className={`block truncate ${
+              selected ? "text-black" : "text-gray-400"
+            }`}
+          >
+            {selected ? selected?.name : "선택"}
+            {/* {selected.name} */}
+          </span>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
             {isOpen ? (
               <ChevronUpIcon

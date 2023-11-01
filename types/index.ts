@@ -26,7 +26,7 @@ export interface SelcetBoxProps
   customWidth?: string;
   options?: Array<SelcetBox>;
 }
-interface SelcetBox {
+export interface SelcetBox {
   key: number;
   name: string;
 }

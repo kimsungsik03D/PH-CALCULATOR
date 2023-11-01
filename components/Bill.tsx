@@ -33,7 +33,8 @@ const Bill = () => {
         <div className="bill-device-selectbox">
           <span className="my-auto">기기</span>
           <span>
-            <Select options={selcetItems} customWidth="w-64" />
+            {/* <Select options={selcetItems} customWidth="w-64" /> */}
+            <Select options={selcetItems} customWidth="w-56" />
           </span>
         </div>
         <div className="bill-device-price">
@@ -57,7 +58,7 @@ const Bill = () => {
       <div className="bill-sale-detail">
         <div className="bill-sale-detail-items">
           <Select options={selcetItems} />
-          <Input inputWidth="w-20" />
+          <Input inputWidth="w-28" />
           <span className="my-auto">999,999원</span>
         </div>
         <div>
