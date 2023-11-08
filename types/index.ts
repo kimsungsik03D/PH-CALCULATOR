@@ -11,6 +11,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   btnHeigth?: string;
   btnColor?: string;
   btnCustomClass?: string;
+  btnSize?: string;
 }
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -32,11 +33,12 @@ export interface SelcetBoxProps
 export interface SelcetBox {
   key: number;
   name: string | null;
+  placeholder?: string | null;
   value?: string | null;
   price?: number;
 }
 export interface Sale {
   saleItem: SelcetBox;
-  saleLate: number;
+  saleLate: string | number;
   salePrice: number;
 }

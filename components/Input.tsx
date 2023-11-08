@@ -1,6 +1,6 @@
 "use client";
 import { InputProps } from "@/types";
-import { ChangeEvent, useState, useRef } from "react";
+import { ChangeEvent, useState, useRef, useEffect } from "react";
 import "./style.css";
 
 const Input = ({
@@ -8,10 +8,15 @@ const Input = ({
   labelClass,
   inputWidth,
   maxMessage,
+  value,
   onChange,
   ...props
 }: InputProps) => {
-  const [enteredNum, setEnterdNum] = useState<string>("");
+  const [enteredNum, setEnterdNum] = useState(value);
+
+  useEffect(() => {
+    setEnterdNum(value);
+  }, [value]);
 
   // onInput Func
   const changeEnteredNum = (e: ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +38,7 @@ const Input = ({
     const { max } = props;
     if (max && max < Number(value)) {
       alert(maxMessage);
+      setEnterdNum(enteredNum);
       return;
     }
     const repValue: string = value
@@ -40,7 +46,6 @@ const Input = ({
       .replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
 
     const startPosition = selectionEnd && value.length - selectionEnd;
-
     setEnterdNum(repValue);
 
     const len = Math.max(value.length - (startPosition || 0), 0);
@@ -49,6 +54,9 @@ const Input = ({
         setSelectionRange(len, len);
       }, 0); // 1초
     }
+    if (onChange) {
+      onChange(e);
+    }
   };
 
   return (
@@ -56,7 +64,7 @@ const Input = ({
       <label className={`${labelClass}`}>
         {label}
         <input
-          className={`custom-input ${inputWidth ? inputWidth : ""}${
+          className={`custom-input ${inputWidth ? inputWidth : ""} ${
             props.type == "current" ? "text-right" : ""
           }
         `}
@@ -64,7 +72,6 @@ const Input = ({
           {...props}
           value={enteredNum}
           onInput={changeEnteredNum}
-          onChange={onChange}
         />
       </label>
     </>
