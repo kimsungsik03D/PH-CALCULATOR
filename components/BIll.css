@@ -44,7 +44,7 @@ hr.hr-dashed {
   @apply mx-2;
 }
 .bill-sale-detail-items {
-  @apply flex justify-between mt-1 mb-2;
+  @apply flex justify-around mt-1 mb-2;
 }
 /* Bill 할인정보란 */
 

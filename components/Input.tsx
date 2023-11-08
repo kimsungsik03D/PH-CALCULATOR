@@ -7,7 +7,8 @@ const Input = ({
   label,
   labelClass,
   inputWidth,
-  onValue,
+  maxMessage,
+  onChange,
   ...props
 }: InputProps) => {
   const [enteredNum, setEnterdNum] = useState<string>("");
@@ -28,19 +29,24 @@ const Input = ({
 
   // only Current Input Change handler
   const onChangeEnteredCurrency = (e: ChangeEvent<HTMLInputElement>) => {
-    const value: string = e.target.value
+    const { value, selectionEnd, setSelectionRange } = e.target;
+    const { max } = props;
+    if (max && max < Number(value)) {
+      alert(maxMessage);
+      return;
+    }
+    const repValue: string = value
       .replace(/^0+|\D+/g, "")
       .replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
 
-    const startPosition =
-      e.target?.selectionEnd && e.target.value.length - e.target?.selectionEnd;
+    const startPosition = selectionEnd && value.length - selectionEnd;
 
-    setEnterdNum(value);
+    setEnterdNum(repValue);
 
-    const len = Math.max(e.target.value.length - (startPosition || 0), 0);
-    if (e.target.value.length != e.target?.selectionEnd) {
+    const len = Math.max(value.length - (startPosition || 0), 0);
+    if (value.length != selectionEnd) {
       setTimeout(() => {
-        e.target?.setSelectionRange(len, len);
+        setSelectionRange(len, len);
       }, 0); // 1초
     }
   };
@@ -58,7 +64,7 @@ const Input = ({
           {...props}
           value={enteredNum}
           onInput={changeEnteredNum}
-          onChange={onValue}
+          onChange={onChange}
         />
       </label>
     </>

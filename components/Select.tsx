@@ -10,19 +10,24 @@ import {
   ChevronUpIcon,
 } from "@heroicons/react/20/solid";
 
-const Selcet = ({ customWidth = "", options = [] }: SelcetBoxProps) => {
-  const [selected, setSelected] = useState<SelcetBox | null>();
+const Selcet = ({
+  customWidth = "",
+  options = [],
+  onselect,
+}: SelcetBoxProps) => {
+  const [selected, setSelected] = useState<SelcetBox | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  const onChanheHandler = (value: SelcetBox | null) => {
+  const onChanheHandler = (value: SelcetBox) => {
     setSelected(value);
     setIsOpen(!isOpen);
+    onselect(value);
   };
 
   return (
     <Listbox
       value={selected}
-      onChange={(value: SelcetBox | null) => onChanheHandler(value)}
+      onChange={(value: SelcetBox) => onChanheHandler(value)}
     >
       <div className="relative my-auto">
         <Listbox.Button
