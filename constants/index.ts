@@ -8,19 +8,19 @@ export const initSaleArry: Sale[] = [
       name: "카드",
       placeholder: "카드 명",
     },
-    saleLate: 0,
-    salePrice: 0,
+    saleLate: "",
+    salePrice: "",
   },
-  {
-    saleItem: {
-      key: 1,
-      value: "coupon",
-      name: "쿠폰",
-      placeholder: "쿠폰 명",
-    },
-    saleLate: 0,
-    salePrice: 0,
-  },
+  // {
+  //   saleItem: {
+  //     key: 1,
+  //     value: "coupon",
+  //     name: "쿠폰",
+  //     placeholder: "쿠폰 명",
+  //   },
+  //   saleLate: 0,
+  //   salePrice: 0,
+  // },
 ];
 
 /** Sale 초기화 값 */

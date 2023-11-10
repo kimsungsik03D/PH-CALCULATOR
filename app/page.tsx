@@ -5,9 +5,9 @@ import { Bill } from "@/components";
 export default function Home() {
   return (
     <main className="container">
-      <Bill />
-      <Bill />
-      <Bill />
+      <Bill shop="A" />
+      <Bill shop="B" />
+      {/* <Bill /> */}
     </main>
   );
 }

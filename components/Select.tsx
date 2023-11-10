@@ -42,25 +42,27 @@ const Selcet = ({
         >
           <span
             className={`block truncate ${
-              selected ? "text-black" : "text-gray-400"
+              selected && !disabled ? "text-black" : "text-gray-400"
             }`}
           >
             {selected ? selected?.name : "선택"}
             {/* {selected.name} */}
           </span>
-          <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-            {isOpen ? (
-              <ChevronUpIcon
-                className="h-5 w-5 text-gray-400"
-                aria-hidden="true"
-              />
-            ) : (
-              <ChevronDownIcon
-                className="h-5 w-5 text-gray-400"
-                aria-hidden="true"
-              />
-            )}
-          </span>
+          {!disabled && (
+            <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+              {isOpen ? (
+                <ChevronUpIcon
+                  className="h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
+              ) : (
+                <ChevronDownIcon
+                  className="h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
+              )}
+            </span>
+          )}
         </Listbox.Button>
         <Transition
           as={Fragment}

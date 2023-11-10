@@ -41,5 +41,5 @@ export interface SelcetBox {
 export interface Sale {
   saleItem: SelcetBox;
   saleLate: string | number;
-  salePrice: number;
+  salePrice: string | number;
 }

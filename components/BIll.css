@@ -47,6 +47,13 @@ hr.hr-dashed {
 .bill-sale-detail-items {
   @apply flex justify-between mt-1 mb-2;
 }
+.bill-sale-detail-items .items {
+  width: calc(100% / 3);
+  /* @apply w-4/12; */
+}
+.flex-end {
+  @apply flex justify-center;
+}
 /* Bill 할인정보란 */
 
 /* Bill 총 금액란 */

@@ -6,7 +6,7 @@ import { SelcetBox, Sale } from "@/types";
 import { initSale, initSaleArry, deviceList, saleItems } from "@/constants";
 import "./Bill.css";
 
-const Bill = () => {
+const Bill = ({ shop }: { shop: string }) => {
   const [device, setDevice] = useState<SelcetBox | null>(null);
   const [sale, setSale] = useState<Array<Sale>>(initSaleArry);
 
@@ -82,7 +82,9 @@ const Bill = () => {
     const tempSaleInfo = [...sale];
 
     if (sale[index].saleItem.value == "card") {
-      const late: number = Number(e.target?.value);
+      const late: number = Number.isNaN(Number(e.target?.value))
+        ? 0
+        : Number(e.target?.value);
       tempSaleInfo[index].saleLate = late;
       tempSaleInfo[index].salePrice = device?.price
         ? device?.price * 0.01 * late
@@ -118,11 +120,12 @@ const Bill = () => {
   return (
     <div className="bill">
       <div className="bill-category">
-        <h3>TITLE</h3>
+        <h3>자급제 기기값 계산기</h3>
+        <h5>{shop} 쇼핑몰</h5>
       </div>
       <div className="bill-type">
-        <Button btnText="자급제" />
-        <Button btnText="자급제" />
+        {/* <Button btnText="자급제 기기값 계산기" /> */}
+        {/* <Button btnText="자급제" /> */}
       </div>
       <div className="bill-device">
         <div className="bill-device-selectbox">
@@ -160,27 +163,48 @@ const Bill = () => {
         {sale &&
           sale.map(({ saleItem, salePrice, saleLate }: Sale, index: number) => (
             <div key={saleItem.key} className="bill-sale-detail-items ">
-              <Select
-                select={index < 2 ? saleItem : null}
-                disabled={index < 2 ? true : false}
-                options={saleItems}
-                onselect={(e) => onSaleSelect(e, index)}
-              />
-              {sale.length != 0 && saleItem.value ? (
-                <Input
-                  type={`${saleItem.value == "card" ? "current" : "text"}`}
-                  value={saleLate}
-                  inputWidth="w-28"
-                  onChange={(e) => onSaleLateInput(e, index)}
-                  max={100}
-                  maxMessage={"100까지만 입력 가능합니다."}
-                  placeholder={`${
-                    saleItem.value == "card" ? "" : saleItem.placeholder
-                  }`}
+              <div className="items">
+                <Select
+                  select={index < 1 ? saleItem : null}
+                  disabled={index < 1 ? true : false}
+                  options={saleItems}
+                  onselect={(e) => onSaleSelect(e, index)}
                 />
-              ) : null}
+              </div>
 
-              <span className="my-auto flex justify-between w-22">
+              {(saleItem.value == "card" || saleItem.value == "giftItem") &&
+              saleItem.value ? (
+                <div className="items flex-end">
+                  <Input
+                    type={`${saleItem.value == "card" ? "current" : "text"}`}
+                    value={saleLate}
+                    inputWidth="w-28"
+                    onChange={(e) => onSaleLateInput(e, index)}
+                    max={100}
+                    maxMessage={"100까지만 입력 가능합니다."}
+                    placeholder={
+                      saleItem.placeholder == null ? "" : saleItem.placeholder
+                    }
+                  />
+                </div>
+              ) : null}
+              {/* {sale.length != 0 && saleItem.value ? (
+                <div className="items flex-end">
+                  <Input
+                    type={`${saleItem.value == "card" ? "current" : "text"}`}
+                    value={saleLate}
+                    inputWidth="w-28"
+                    onChange={(e) => onSaleLateInput(e, index)}
+                    max={100}
+                    maxMessage={"100까지만 입력 가능합니다."}
+                    placeholder={
+                      saleItem.placeholder == null ? "" : saleItem.placeholder
+                    }
+                  />
+                </div>
+              ) : null} */}
+
+              <span className="my-auto flex justify-end items">
                 {saleItem.value == "card" ? (
                   <span className="my-auto">
                     {salePrice != 0 ? salePrice.toLocaleString("ko-KR") : 0}원
@@ -190,7 +214,7 @@ const Bill = () => {
                     <Input
                       type={`current`}
                       value={salePrice}
-                      inputWidth="w-20"
+                      inputWidth="w-full"
                       max={10000000}
                       maxMessage={"9999999까지만 입력 가능합니다."}
                       onChange={(e) => onSaleLateInput(e, index)}
@@ -199,7 +223,7 @@ const Bill = () => {
                   </span>
                 )}
                 <span className="w-9 text-right my-auto">
-                  {index > 1 && (
+                  {index > 0 && (
                     <Button
                       btnText="-"
                       onClick={() => removeSaleInfo(index)}
