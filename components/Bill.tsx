@@ -4,7 +4,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { Button, Select, Input } from "@/components";
 import { SelcetBox, Sale } from "@/types";
 import { initSale, initSaleArry, deviceList, saleItems } from "@/constants";
-import "./Bill.css";
+import styles from "./BIll.module.css";
 
 const Bill = ({ shop }: { shop: string }) => {
   const [device, setDevice] = useState<SelcetBox | null>(null);
@@ -118,17 +118,17 @@ const Bill = ({ shop }: { shop: string }) => {
   };
 
   return (
-    <div className="bill">
-      <div className="bill-category">
+    <div className={styles.bill}>
+      <div className={styles.bill_category}>
         <h3>자급제 기기값 계산기</h3>
         <h5>{shop} 쇼핑몰</h5>
       </div>
-      <div className="bill-type">
+      <div className={styles.bill_type}>
         {/* <Button btnText="자급제 기기값 계산기" /> */}
         {/* <Button btnText="자급제" /> */}
       </div>
-      <div className="bill-device">
-        <div className="bill-device-selectbox">
+      <div className={styles.bill_device}>
+        <div className={styles.bill_device_selectbox}>
           <span className="my-auto">기기</span>
           <span>
             <Select
@@ -138,32 +138,32 @@ const Bill = ({ shop }: { shop: string }) => {
             />
           </span>
         </div>
-        <div className="bill-device-price">
+        <div className={styles.bill_device_price}>
           <span>출시가격</span>
           <span>{device ? device?.price?.toLocaleString("ko-KR") : 0} 원</span>
         </div>
       </div>
 
-      <hr className="hr-dashed" />
-      <hr className="hr-dashed" />
-      <div className="bill-sale flex">
+      <hr className={styles.hr_dashed} />
+      <hr className={styles.hr_dashed} />
+      <div className={`${styles.bill_sale} flex`}>
         <h5>할인정보 </h5>
         <p className="text-xs my-auto">
           &nbsp;&nbsp;* 카드, 쿠폰이 없을 공란으로 맨 아래 칸부터 작성{" "}
         </p>
       </div>
-      <hr className="hr-dashed" />
-      <div className="bill-sale-title">
+      <hr className={styles.hr_dashed} />
+      <div className={styles.bill_sale_title}>
         <span>할인 종류</span>
         <span>할인 비율 / 품목</span>
         <span>할인 금액</span>
       </div>
-      <hr className="hr-dashed" />
-      <div className="bill-sale-detail">
+      <hr className={styles.hr_dashed} />
+      <div className={styles.bill_sale_detail}>
         {sale &&
           sale.map(({ saleItem, salePrice, saleLate }: Sale, index: number) => (
-            <div key={saleItem.key} className="bill-sale-detail-items ">
-              <div className="items">
+            <div key={saleItem.key} className={styles.bill_sale_detail_items}>
+              <div className={styles.items}>
                 <Select
                   select={index < 1 ? saleItem : null}
                   disabled={index < 1 ? true : false}
@@ -174,7 +174,7 @@ const Bill = ({ shop }: { shop: string }) => {
 
               {(saleItem.value == "card" || saleItem.value == "giftItem") &&
               saleItem.value ? (
-                <div className="items flex-end">
+                <div className={`${styles.items} flex-end`}>
                   <Input
                     type={`${saleItem.value == "card" ? "current" : "text"}`}
                     value={saleLate}
@@ -246,21 +246,21 @@ const Bill = ({ shop }: { shop: string }) => {
         </div>
       </div>
 
-      <hr className="hr-dashed" />
-      <div className="bill-total">
-        <div className="bill-sale-total">
+      <hr className={styles.hr_dashed} />
+      <div className={styles.bill_total}>
+        <div className={styles.bill_sale_total}>
           <span>총 할인금액</span>
           <span className="text-red-400 font-bold">
             - {totalSale.toLocaleString("ko-KR")} 원
           </span>
         </div>
-        <div className="bill-total-price">
+        <div className={styles.bill_total_price}>
           <span>최종 구매가</span>
           <span>{total.toLocaleString("ko-KR")} 원</span>
         </div>
       </div>
 
-      <p className="bill-shadow-text">
+      <p className={styles.bill_shadow_text}>
         * 본 계산은 참고용임으로 실제 계산과 다를 수 있습니다.
       </p>
     </div>
