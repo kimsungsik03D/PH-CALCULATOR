@@ -49,11 +49,8 @@ const Input = ({
     setEnterdNum(repValue);
 
     const len = Math.max(value.length - (startPosition || 0), 0);
-    if (value.length != selectionEnd) {
-      setTimeout(() => {
-        setSelectionRange(len, len);
-      }, 0); // 1초
-    }
+    // if (value.lengt
+
     if (onChange) {
       onChange(e);
     }

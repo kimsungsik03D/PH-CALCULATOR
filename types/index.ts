@@ -26,6 +26,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export interface SelcetBoxProps
   extends SelectHTMLAttributes<HTMLSelectElement> {
+  select?: SelcetBox | null;
   customWidth?: string;
   options?: Array<SelcetBox>;
   onselect: (e: SelcetBox) => void;

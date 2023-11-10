@@ -1,5 +1,29 @@
 import { Sale } from "@/types";
 /** Sale 초기화 값 */
+export const initSaleArry: Sale[] = [
+  {
+    saleItem: {
+      key: 0,
+      value: "card",
+      name: "카드",
+      placeholder: "카드 명",
+    },
+    saleLate: 0,
+    salePrice: 0,
+  },
+  {
+    saleItem: {
+      key: 1,
+      value: "coupon",
+      name: "쿠폰",
+      placeholder: "쿠폰 명",
+    },
+    saleLate: 0,
+    salePrice: 0,
+  },
+];
+
+/** Sale 초기화 값 */
 export const initSale: Sale = {
   saleItem: {
     key: 0,
@@ -32,18 +56,6 @@ export const deviceList = [
 /** 할인 종류 */
 export const saleItems = [
   {
-    key: 1,
-    value: "card",
-    name: "카드",
-    placeholder: "카드 명",
-  },
-  {
-    key: 2,
-    value: "coupon",
-    name: "쿠폰",
-    placeholder: "쿠폰 명",
-  },
-  {
     key: 3,
     value: "giftItem",
     name: "사은품",
@@ -51,6 +63,12 @@ export const saleItems = [
   },
   {
     key: 4,
+    value: "cash",
+    name: "할인금액",
+    placeholder: "할인금액",
+  },
+  {
+    key: 5,
     value: "etc",
     name: "기타",
     placeholder: "기타",

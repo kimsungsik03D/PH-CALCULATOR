@@ -11,11 +11,14 @@ import {
 } from "@heroicons/react/20/solid";
 
 const Selcet = ({
+  select = null,
   customWidth = "",
   options = [],
   onselect,
+  ...props
 }: SelcetBoxProps) => {
-  const [selected, setSelected] = useState<SelcetBox | null>(null);
+  const { disabled } = props;
+  const [selected, setSelected] = useState<SelcetBox | null>(select);
   const [isOpen, setIsOpen] = useState(false);
 
   const onChanheHandler = (value: SelcetBox) => {
@@ -27,6 +30,7 @@ const Selcet = ({
   return (
     <Listbox
       value={selected}
+      {...props}
       onChange={(value: SelcetBox) => onChanheHandler(value)}
     >
       <div className="relative my-auto">
@@ -67,7 +71,9 @@ const Selcet = ({
           leaveFrom="transform  opacity-100"
           leaveTo="transform  opacity-0"
         >
-          <Listbox.Options className={`custom-selectbox-option ${customWidth}`}>
+          <Listbox.Options
+            className={`custom-selectbox-option ${customWidth} z-10`}
+          >
             {options.map((value, index) => (
               <Listbox.Option
                 key={index}

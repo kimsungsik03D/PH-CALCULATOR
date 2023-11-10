@@ -3,12 +3,12 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { Button, Select, Input } from "@/components";
 import { SelcetBox, Sale } from "@/types";
-import { initSale, deviceList, saleItems } from "@/constants";
+import { initSale, initSaleArry, deviceList, saleItems } from "@/constants";
 import "./Bill.css";
 
 const Bill = () => {
   const [device, setDevice] = useState<SelcetBox | null>(null);
-  const [sale, setSale] = useState<Array<Sale>>([initSale]);
+  const [sale, setSale] = useState<Array<Sale>>(initSaleArry);
 
   const [totalSale, setTotalSale] = useState<number>(0);
   const [total, setTotal] = useState<number>(0);
@@ -159,8 +159,10 @@ const Bill = () => {
       <div className="bill-sale-detail">
         {sale &&
           sale.map(({ saleItem, salePrice, saleLate }: Sale, index: number) => (
-            <div key={saleItem.key} className="bill-sale-detail-items">
+            <div key={saleItem.key} className="bill-sale-detail-items ">
               <Select
+                select={index < 2 ? saleItem : null}
+                disabled={index < 2 ? true : false}
                 options={saleItems}
                 onselect={(e) => onSaleSelect(e, index)}
               />
@@ -190,19 +192,21 @@ const Bill = () => {
                       value={salePrice}
                       inputWidth="w-20"
                       max={10000000}
-                      maxMessage={"10000000까지만 입력 가능합니다."}
+                      maxMessage={"9999999까지만 입력 가능합니다."}
                       onChange={(e) => onSaleLateInput(e, index)}
                       placeholder={`${"할인금액"}`}
                     />
                   </span>
                 )}
                 <span className="w-9 text-right my-auto">
-                  <Button
-                    btnText="-"
-                    onClick={() => removeSaleInfo(index)}
-                    btnSize="mini"
-                    btnColor="red"
-                  />
+                  {index > 1 && (
+                    <Button
+                      btnText="-"
+                      onClick={() => removeSaleInfo(index)}
+                      btnSize="mini"
+                      btnColor="red"
+                    />
+                  )}
                 </span>
               </span>
             </div>
