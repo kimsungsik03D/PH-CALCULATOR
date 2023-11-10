@@ -23,6 +23,7 @@ const page = () => {
     { key: 4, name: "오렌지" },
     { key: 5, name: "자몽" },
   ];
+  const onselect = () => {};
 
   return (
     <div>
@@ -41,7 +42,7 @@ const page = () => {
           <Input label="기본 input : " type="text" onValue={onValue} />
         </div>
         <div>
-          <Select options={options} />
+          <Select options={options} onselect={onselect} />
         </div>
       </div>
     </div>

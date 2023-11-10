@@ -35,7 +35,7 @@ const Bill = ({ shop }: { shop: string }) => {
     let result = 0;
     let devicePrice = device != null ? device.price : 0;
     sale.map((value) => {
-      result += value.salePrice;
+      result += Number(value.salePrice);
     });
     setTotalSale(result);
     setTotal(devicePrice ? devicePrice - result : 0);
