@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import QuestionLottie from "./Lottie";
 
 const title = [
   "기기를 고르세요.",
@@ -71,10 +72,9 @@ const YesOrNo = () => {
 const SelectDevice = () => {
   return (
     <>
-      <div
-        className="bg-lime-300 mt-2 mb-9"
-        style={{ width: "184px", height: "184px" }}
-      ></div>
+      <QuestionLottie
+        style={{ marginTop: "1.75rem", marginBottom: "1.75rem" }}
+      />
       <div className="border border-neutral-300 rounded-lg w-11/12 h-9 mb-9">
         <select
           name="device"
@@ -183,10 +183,11 @@ const renewal = () => {
       >
         <div className="text-xl">자급제 휴대폰 계산기</div>
         <div className="text-2xl my-2">{title[3]}</div>
-        <SelectCopon />
+
+        {/* <SelectCopon /> */}
         {/* <SelectPayment /> */}
         {/* <YesOrNo /> */}
-        {/* <SelectDevice /> */}
+        <SelectDevice />
         {/* <Result /> */}
       </div>
     </div>
