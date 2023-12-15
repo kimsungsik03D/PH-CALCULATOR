@@ -43,3 +43,17 @@ export interface Sale {
   saleLate: string | number;
   salePrice: string | number;
 }
+
+export interface Device {
+  key: string;
+  name: string;
+  price: number;
+}
+export interface Payment {
+  key: string;
+  name: string;
+}
+export interface PaymentSaleLate {
+  key: number;
+  late: string;
+}

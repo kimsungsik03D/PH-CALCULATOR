@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import QuestionLottie from "./Lottie";
-import page from "../widget/page";
-import next from "next";
+import { device, payment, paymentSaleLate } from "@/constants";
+
 interface CommonProps {
   pageUp: (nextPage: number) => void;
   type?: string;
@@ -15,33 +15,13 @@ interface SelectCoponProps extends CommonProps {}
 interface ResultProps extends CommonProps {}
 interface YesOrNoProps extends CommonProps {}
 
-interface Device {
-  key: string;
-  name: string;
-}
-interface payment {
-  key: string;
-  name: string;
-}
-
 const title: string[] = [
   "기기를 고르세요.",
   "카드할인 정보가 있나요?",
   "카드 할인 정보를 입력해주세요",
   "추가 할인 정보가 있나요?",
   "추가 할인 정보를 입력해주세요.",
-];
-
-const device: Device[] = [
-  { key: "ip15pm256", name: "IPhone 15Pro max 256GB" },
-  { key: "ip15pm512", name: "IPhone 15Pro max 512GB" },
-  { key: "ip15pm1000", name: "IPhone 15Pro max 1TB" },
-];
-
-const payment: payment[] = [
-  { key: "samsung", name: "삼성카드" },
-  { key: "kokmin", name: "국민카드" },
-  { key: "uri", name: "우리카드" },
+  "영수증",
 ];
 
 const Result = ({ pageUp }: ResultProps) => {
@@ -127,9 +107,11 @@ const SelectDevice = ({ pageUp }: SelectDeviceProps) => {
           id="device"
           className="w-full h-full text-center rounded-lg"
         >
-          <option value="ip15pm256">IPhone 15Pro max 256GB</option>
-          <option value="ip15pm512">IPhone 15Pro max 512GB</option>
-          <option value="ip15pm1000">IPhone 15Pro max 1TB</option>
+          {device.map((value, index) => (
+            <option key={index} value={value.key}>
+              {value.name}
+            </option>
+          ))}
         </select>
       </div>
       <div className="flex justify-between w-11/12">
@@ -159,9 +141,11 @@ const SelectPayment = ({ pageUp }: SelectPaymentProps) => {
           id="device"
           className="w-full h-full text-center rounded-lg"
         >
-          <option value="ip15pm256">IPhone 15Pro max 256GB</option>
-          <option value="ip15pm512">IPhone 15Pro max 512GB</option>
-          <option value="ip15pm1000">IPhone 15Pro max 1TB</option>
+          {payment.map((value, index) => (
+            <option key={index} value={value.key}>
+              {value.name}
+            </option>
+          ))}
         </select>
       </div>
       <div className="border border-neutral-300 rounded-lg w-11/12 h-12 mb-9">
@@ -170,9 +154,11 @@ const SelectPayment = ({ pageUp }: SelectPaymentProps) => {
           id="device"
           className="w-full h-full text-center rounded-lg"
         >
-          <option value="ip15pm256">IPhone 15Pro max 256GB</option>
-          <option value="ip15pm512">IPhone 15Pro max 512GB</option>
-          <option value="ip15pm1000">IPhone 15Pro max 1TB</option>
+          {paymentSaleLate.map((value, index) => (
+            <option key={index} value={value.key}>
+              {value.late}
+            </option>
+          ))}
         </select>
       </div>
       <div className="flex justify-between w-11/12 mt-24">
@@ -192,6 +178,7 @@ const SelectPayment = ({ pageUp }: SelectPaymentProps) => {
     </>
   );
 };
+
 const SelectCopon = ({ type = "", pageUp }: SelectCoponProps) => {
   return (
     <>
