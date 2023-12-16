@@ -57,3 +57,14 @@ export interface PaymentSaleLate {
   key: number;
   late: string;
 }
+
+export interface CommonProps {
+  pageUp: (nextPage: number) => void;
+  type?: string;
+}
+export interface SelectDeviceProps extends CommonProps {}
+
+export interface SelectPaymentProps extends CommonProps {}
+export interface SelectCoponProps extends CommonProps {}
+export interface ResultProps extends CommonProps {}
+export interface YesOrNoProps extends CommonProps {}

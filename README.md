@@ -30,5 +30,9 @@ Lottie
 
 > https://app.lottiefiles.com/animation/e1879e69-ee67-4db5-a71e-a6599154ec2b?channel=web&source=public-animation&panel=download
 
+react-transition-group
+
+> https://reactcommunity.org/react-transition-group/transition
+
 </div>
 </details>
