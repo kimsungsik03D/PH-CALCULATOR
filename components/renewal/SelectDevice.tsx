@@ -1,8 +1,26 @@
+"use client";
+import { ChangeEvent, useEffect } from "react";
 import QuestionLottie from "@/app/renewal/Lottie";
 import { device } from "@/constants";
 import { SelectDeviceProps } from "@/types";
+import { handleSelectFindObject } from "@/common";
 
-const SelectDevice = ({ pageUp }: SelectDeviceProps) => {
+const SelectDevice = ({ pageUp, setData }: SelectDeviceProps) => {
+  let data = { ...device[0] };
+  // useEffect(() => {
+  //   setData({ device: device[0] });
+  // }, []);
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const targetValue = e.target.value;
+    // const data = handleSelectFindObject(targetValue, device);
+    data = { ...handleSelectFindObject(targetValue, device) };
+  };
+
+  const onBtnClick = () => {
+    setData({ device: data });
+    pageUp(2);
+  };
+
   return (
     <div className="w-full flex flex-col items-center">
       <QuestionLottie
@@ -13,6 +31,7 @@ const SelectDevice = ({ pageUp }: SelectDeviceProps) => {
           name="device"
           id="device"
           className="w-full h-full text-center rounded-lg"
+          onChange={handleChange}
         >
           {device.map((value, index) => (
             <option key={index} value={value.key}>
@@ -30,7 +49,7 @@ const SelectDevice = ({ pageUp }: SelectDeviceProps) => {
         </p>
         <button
           className="bg-[#1A73E8] text-white px-[20px] py-[8px] rounded-lg"
-          onClick={() => pageUp(2)}
+          onClick={onBtnClick}
         >
           다음
         </button>

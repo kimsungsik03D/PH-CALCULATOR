@@ -55,16 +55,43 @@ export interface Payment {
 }
 export interface PaymentSaleLate {
   key: number;
-  late: string;
+  late: number;
+  lateName: string;
 }
 
 export interface CommonProps {
   pageUp: (nextPage: number) => void;
+
   type?: string;
 }
-export interface SelectDeviceProps extends CommonProps {}
+export interface SelectDeviceProps extends CommonProps {
+  setData: (data: any) => void;
+}
 
-export interface SelectPaymentProps extends CommonProps {}
-export interface SelectCoponProps extends CommonProps {}
-export interface ResultProps extends CommonProps {}
+export interface SelectPaymentProps extends CommonProps {
+  setData: (data: any) => void;
+}
+export interface SelectCoponProps extends CommonProps {
+  setData: (data: any) => void;
+}
+export interface ResultProps {
+  data: { device: Device; payment: Payment; sale: Sale2 };
+}
 export interface YesOrNoProps extends CommonProps {}
+
+export interface Device {
+  key: string;
+  name: string;
+  price: number;
+}
+export interface Payment {
+  [key: string]: string | number | undefined;
+  name: string;
+  late: number;
+  lateName: string;
+  price?: number;
+}
+export interface Sale2 {
+  saleInfo: string;
+  salePrice: string | number;
+}

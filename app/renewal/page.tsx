@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRef } from "react";
 import {
   Result,
   SelectCopon,
@@ -9,6 +10,7 @@ import {
   YesOrNo,
 } from "@/components";
 import { Transition } from "react-transition-group";
+import { ResultProps } from "@/types";
 
 interface transitionStylesType {
   [key: string]: { opacity: number };
@@ -27,7 +29,7 @@ const title: string[] = [
   "영수증",
 ];
 
-const duration = 500;
+const duration = 300;
 
 const defaultStyle = {
   transition: `opacity ${duration}ms ease-in-out`,
@@ -42,9 +44,27 @@ const transitionStyles: transitionStylesType = {
 };
 
 const Reneal = () => {
-  // console.log({ ...transitionStyles });
+  const nodeRef = useRef(null);
+
   const [page, setPage] = useState<number>(1);
+
   const [fade, setFade] = useState(true);
+  const [bill, setBill] = useState<ResultProps>({
+    data: {
+      device: {
+        key: "",
+        name: "",
+        price: 0,
+      },
+      payment: {
+        key: "",
+        name: "",
+        late: 0,
+        lateName: "",
+      },
+      sale: { saleInfo: "", salePrice: "" },
+    },
+  });
 
   const pageUp = (nextPage: number): void => {
     setFade(false);
@@ -53,6 +73,9 @@ const Reneal = () => {
       setFade(true);
     }, 1000);
   };
+  const handleBillData = (data: any) => {
+    setBill({ ...bill.data, ...data });
+  };
   return (
     <div className="flex w-full h-screen items-center justify-center text-sm ">
       <div
@@ -60,10 +83,11 @@ const Reneal = () => {
         style={{ height: "500px", width: "450px" }}
       >
         <div className="text-xl">자급제 휴대폰 계산기</div>
-        <Transition in={fade} timeout={duration}>
+        <Transition nodeRef={nodeRef} in={fade} timeout={duration}>
           {(state: string) => {
             return (
               <div
+                ref={nodeRef}
                 className="w-full flex flex-col items-center"
                 style={{
                   ...defaultStyle,
@@ -72,12 +96,18 @@ const Reneal = () => {
               >
                 <div className="text-2xl my-2">{title[page - 1]}</div>
 
-                {page == 1 && <SelectDevice pageUp={pageUp} />}
+                {page == 1 && (
+                  <SelectDevice pageUp={pageUp} setData={handleBillData} />
+                )}
                 {page == 2 && <YesOrNo pageUp={pageUp} />}
-                {page == 3 && <SelectPayment pageUp={pageUp} />}
+                {page == 3 && (
+                  <SelectPayment pageUp={pageUp} setData={handleBillData} />
+                )}
                 {page == 4 && <YesOrNo pageUp={pageUp} type="sale" />}
-                {page == 5 && <SelectCopon pageUp={pageUp} type="sale" />}
-                {page == 6 && <Result pageUp={pageUp} />}
+                {page == 5 && (
+                  <SelectCopon pageUp={pageUp} setData={handleBillData} />
+                )}
+                {page == 6 && <Result data={bill.data} />}
               </div>
             );
           }}

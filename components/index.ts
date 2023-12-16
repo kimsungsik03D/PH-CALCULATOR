@@ -4,7 +4,6 @@ import SelectBox from "./SelectBox";
 import Select from "./Select";
 import Bill from "./Bill";
 import ResultCal from "./ResultCal";
-import Fade from "./Fade";
 
 import SelectDevice from "./renewal/SelectDevice";
 import YesOrNo from "./renewal/YesOrNo";
@@ -19,7 +18,6 @@ export {
   Select,
   Bill,
   ResultCal,
-  Fade,
   SelectDevice,
   YesOrNo,
   SelectPayment,
