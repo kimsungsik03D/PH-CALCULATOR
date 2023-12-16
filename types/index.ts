@@ -87,11 +87,12 @@ export interface Device {
 export interface Payment {
   [key: string]: string | number | undefined;
   name: string;
-  late: number;
-  lateName: string;
+  late?: number;
+  lateName?: string;
   price?: number;
 }
 export interface Sale2 {
+  [key: string]: string | number;
   saleInfo: string;
   salePrice: string | number;
 }

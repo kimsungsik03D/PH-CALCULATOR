@@ -6,7 +6,7 @@ import { SelectDeviceProps } from "@/types";
 import { handleSelectFindObject } from "@/common";
 
 const SelectDevice = ({ pageUp, setData }: SelectDeviceProps) => {
-  let data = { ...device[0] };
+  let data: any = { ...device[0] };
   // useEffect(() => {
   //   setData({ device: device[0] });
   // }, []);

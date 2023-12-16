@@ -6,7 +6,7 @@ import { SelectPaymentProps, Payment } from "@/types";
 import { handleSelectFindObject } from "@/common";
 
 const SelectPayment = ({ pageUp, setData }: SelectPaymentProps) => {
-  let paymentData: Payment = { ...payment[0], ...paymentSaleLate[0] };
+  let paymentData: any = { ...payment[0], ...paymentSaleLate[0] };
   // useEffect(() => {
   //   setData({ payment: paymentData });
   // }, []);

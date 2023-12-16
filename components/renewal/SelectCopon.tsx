@@ -1,10 +1,10 @@
 "use client";
 
-import { SelectCoponProps } from "@/types";
+import { SelectCoponProps, Sale2 } from "@/types";
 import { ChangeEvent, InputHTMLAttributes } from "react";
 
 const SelectCopon = ({ pageUp, setData }: SelectCoponProps) => {
-  let data = { saleInfo: "", salePrice: "" };
+  let data: Sale2 = { saleInfo: "", salePrice: "" };
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.value) {
       data[e.target.name] = e.target.value;
