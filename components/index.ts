@@ -6,6 +6,7 @@ import Bill from "./Bill";
 import ResultCal from "./ResultCal";
 
 import SelectDevice from "./renewal/SelectDevice";
+import BillDesk from "./renewal/BillDesk";
 import YesOrNo from "./renewal/YesOrNo";
 import SelectPayment from "./renewal/SelectPayment";
 import SelectCopon from "./renewal/SelectCopon";
@@ -18,6 +19,7 @@ export {
   Select,
   Bill,
   ResultCal,
+  BillDesk,
   SelectDevice,
   YesOrNo,
   SelectPayment,

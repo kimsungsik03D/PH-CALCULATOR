@@ -96,3 +96,11 @@ export interface Sale2 {
   saleInfo: string;
   salePrice: string | number;
 }
+
+export interface transitionStylesType {
+  [key: string]: { opacity: number };
+  entering: { opacity: number };
+  entered: { opacity: number };
+  exiting: { opacity: number };
+  exited: { opacity: number };
+}

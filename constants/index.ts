@@ -75,6 +75,15 @@ export const saleItems = [
   },
 ];
 
+export const title: string[] = [
+  "기기를 고르세요.",
+  "카드할인 정보가 있나요?",
+  "카드 할인 정보를 입력해주세요",
+  "추가 할인 정보가 있나요?",
+  "추가 할인 정보를 입력해주세요.",
+  "영수증",
+];
+
 export const device: Device[] = [
   { key: "ip15128", name: "IPhone 15 128GB", price: 1250000 },
   { key: "ip15256", name: "IPhone 15 256GB", price: 1400000 },
