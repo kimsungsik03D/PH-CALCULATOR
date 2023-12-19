@@ -148,3 +148,21 @@ export const paymentSaleLate: PaymentSaleLate[] = [
   { key: 29, late: 29, lateName: "29%" },
   { key: 30, late: 30, lateName: "30%" },
 ].reverse();
+
+export const resultData = {
+  device: {
+    key: "ip15128",
+    name: "IPhone 15 128GB",
+    price: 1250000,
+  },
+  payment: {
+    key: 30,
+    name: "삼성카드",
+    late: 30,
+    lateName: "30%",
+  },
+  sale: {
+    saleInfo: "사은품",
+    salePrice: "10000000",
+  },
+};

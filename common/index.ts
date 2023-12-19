@@ -15,3 +15,18 @@ export const handleSelectFindObject = (
 
   return data;
 };
+
+export const setLocalStorageResult = (bill: any): any => {
+  const result = localStorage.getItem("result");
+  const resultParse = JSON.parse(localStorage.getItem("result") ?? "{}");
+
+  let item: any[] = [];
+  if (typeof result == "string") {
+    console.log([...resultParse, bill]);
+    item = [...resultParse, bill];
+  } else {
+    item = [bill];
+  }
+
+  return item;
+};

@@ -12,6 +12,7 @@ import {
 import { Transition } from "react-transition-group";
 import { ResultProps, transitionStylesType } from "@/types";
 import { title } from "@/constants";
+import { setLocalStorageResult } from "@/common";
 
 const duration = 200;
 
@@ -33,32 +34,36 @@ const BillDesk = () => {
   const [page, setPage] = useState<number>(1);
 
   const [fade, setFade] = useState(true);
-  const [bill, setBill] = useState<ResultProps>({
-    data: {
-      device: {
-        key: "",
-        name: "",
-        price: 0,
-      },
-      payment: {
-        key: "",
-        name: "",
-        late: 0,
-        lateName: "",
-      },
-      sale: { saleInfo: "", salePrice: "" },
+  const [bill, setBill] = useState({
+    device: {
+      key: "",
+      name: "",
+      price: 0,
     },
+    payment: {
+      key: "",
+      name: "",
+      late: 0,
+      lateName: "",
+    },
+    sale: { saleInfo: "", salePrice: "" },
   });
 
   const pageUp = (nextPage: number): void => {
     setFade(false);
+
     setTimeout(() => {
       setPage(nextPage);
+      if (nextPage === 6) {
+        // localStorage의 데이터 저장
+        const item = setLocalStorageResult(bill);
+        localStorage.setItem("result", JSON.stringify(item));
+      }
       setFade(true);
     }, 1000);
   };
   const handleBillData = (data: any) => {
-    setBill({ ...bill.data, ...data });
+    setBill({ ...bill, ...data });
   };
   return (
     <Transition nodeRef={nodeRef} in={fade} timeout={duration}>
@@ -85,7 +90,7 @@ const BillDesk = () => {
             {page == 5 && (
               <SelectCopon pageUp={pageUp} setData={handleBillData} />
             )}
-            {page == 6 && <Result data={bill.data} />}
+            {page == 6 && <Result data={bill} />}
           </div>
         );
       }}

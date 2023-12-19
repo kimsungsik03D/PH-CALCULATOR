@@ -59,6 +59,7 @@ export interface PaymentSaleLate {
   lateName: string;
 }
 
+//
 export interface CommonProps {
   pageUp: (nextPage: number) => void;
 
@@ -78,6 +79,12 @@ export interface ResultProps {
   data: { device: Device; payment: Payment; sale: Sale2 };
 }
 export interface YesOrNoProps extends CommonProps {}
+
+export interface Result {
+  device: Device;
+  payment: Payment;
+  sale: Sale2;
+}
 
 export interface Device {
   key: string;

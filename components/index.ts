@@ -11,6 +11,7 @@ import YesOrNo from "./renewal/YesOrNo";
 import SelectPayment from "./renewal/SelectPayment";
 import SelectCopon from "./renewal/SelectCopon";
 import Result from "./renewal/Result";
+import ResultCollection from "./renewal/ResultCollection";
 
 export {
   Button,
@@ -25,4 +26,5 @@ export {
   SelectPayment,
   SelectCopon,
   Result,
+  ResultCollection,
 };
