@@ -12,10 +12,10 @@ import {
   fruit_7,
   fruit_8,
 } from "@/images";
-import { Result } from "@/types";
+import { ResultType } from "@/types";
 
 const ResultCollection = () => {
-  const [items, setItems] = useState<Result[]>([]);
+  const [items, setItems] = useState<ResultType[]>([]);
 
   useEffect(() => {
     const result: string | null = localStorage.getItem("result");

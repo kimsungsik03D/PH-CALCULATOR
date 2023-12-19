@@ -76,11 +76,11 @@ export interface SelectCoponProps extends CommonProps {
   setData: (data: any) => void;
 }
 export interface ResultProps {
-  data: { device: Device; payment: Payment; sale: Sale2 };
+  data: ResultType;
 }
 export interface YesOrNoProps extends CommonProps {}
 
-export interface Result {
+export interface ResultType {
   device: Device;
   payment: Payment;
   sale: Sale2;
@@ -104,10 +104,14 @@ export interface Sale2 {
   salePrice: string | number;
 }
 
-export interface transitionStylesType {
+export interface TransitionStylesType {
   [key: string]: { opacity: number };
   entering: { opacity: number };
   entered: { opacity: number };
   exiting: { opacity: number };
   exited: { opacity: number };
+}
+export interface DefaultStyle {
+  transition: string;
+  opacity: number;
 }

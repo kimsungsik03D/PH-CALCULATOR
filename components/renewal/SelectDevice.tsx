@@ -7,12 +7,9 @@ import { handleSelectFindObject } from "@/common";
 
 const SelectDevice = ({ pageUp, setData }: SelectDeviceProps) => {
   let data: any = { ...device[0] };
-  // useEffect(() => {
-  //   setData({ device: device[0] });
-  // }, []);
+  
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const targetValue = e.target.value;
-    // const data = handleSelectFindObject(targetValue, device);
     data = { ...handleSelectFindObject(targetValue, device) };
   };
 

@@ -10,18 +10,26 @@ import {
   YesOrNo,
 } from "@/components";
 import { Transition } from "react-transition-group";
-import { ResultProps, transitionStylesType } from "@/types";
+import {
+  ResultProps,
+  ResultType,
+  TransitionStylesType,
+  DefaultStyle,
+  Device,
+  Payment,
+  Sale2,
+} from "@/types";
 import { title } from "@/constants";
 import { setLocalStorageResult } from "@/common";
 
 const duration = 200;
 
-const defaultStyle = {
+const defaultStyle: DefaultStyle = {
   transition: `opacity ${duration}ms ease-in-out`,
   opacity: 0,
 };
 
-const transitionStyles: transitionStylesType = {
+const transitionStyles: TransitionStylesType = {
   entering: { opacity: 1 },
   entered: { opacity: 1 },
   exiting: { opacity: 0 },
@@ -33,8 +41,8 @@ const BillDesk = () => {
 
   const [page, setPage] = useState<number>(1);
 
-  const [fade, setFade] = useState(true);
-  const [bill, setBill] = useState({
+  const [fade, setFade] = useState<boolean>(true);
+  const [bill, setBill] = useState<ResultType>({
     device: {
       key: "",
       name: "",
@@ -49,7 +57,7 @@ const BillDesk = () => {
     sale: { saleInfo: "", salePrice: "" },
   });
 
-  const pageUp = (nextPage: number): void => {
+  const pageUp = (nextPage: number) => {
     setFade(false);
 
     setTimeout(() => {
@@ -62,7 +70,7 @@ const BillDesk = () => {
       setFade(true);
     }, 1000);
   };
-  const handleBillData = (data: any) => {
+  const handleBillData = (data: Device | Payment | Sale2) => {
     setBill({ ...bill, ...data });
   };
   return (
