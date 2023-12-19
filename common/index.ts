@@ -1,3 +1,5 @@
+import { Device, Payment, Sale2 } from "@/types";
+
 interface HandleSelectObject {
   key: string | number;
   name?: string;
@@ -8,8 +10,8 @@ interface HandleSelectObject {
 export const handleSelectFindObject = (
   keyName: string,
   constant: Array<any>
-): HandleSelectObject | undefined => {
-  const data: HandleSelectObject | undefined = constant.find((value) => {
+): Device | Payment | Sale2 | undefined => {
+  const data: Device | Payment | Sale2 | undefined = constant.find((value) => {
     if (value.key == keyName) return value;
   });
 

@@ -1,14 +1,34 @@
 "use client";
 
 import { useState, useRef } from "react";
+import dynamic from "next/dynamic";
 
-import {
-  Result,
-  SelectCopon,
-  SelectDevice,
-  SelectPayment,
-  YesOrNo,
-} from "@/components";
+const Result = dynamic(() => import("@/components/renewal/Result"), {
+  ssr: false,
+  loading: () => null,
+});
+const SelectCopon = dynamic(() => import("@/components/renewal/SelectCopon"), {
+  ssr: false,
+  loading: () => null,
+});
+const SelectDevice = dynamic(
+  () => import("@/components/renewal/SelectDevice"),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
+const SelectPayment = dynamic(
+  () => import("@/components/renewal/SelectPayment"),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
+const YesOrNo = dynamic(() => import("@/components/renewal/YesOrNo"), {
+  ssr: false,
+  loading: () => null,
+});
 import { Transition } from "react-transition-group";
 import {
   ResultProps,
@@ -22,7 +42,7 @@ import {
 import { title } from "@/constants";
 import { setLocalStorageResult } from "@/common";
 
-const duration = 200;
+const duration = 1000;
 
 const defaultStyle: DefaultStyle = {
   transition: `opacity ${duration}ms ease-in-out`,

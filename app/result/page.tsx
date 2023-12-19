@@ -1,6 +1,14 @@
 // "use client";
+import dynamic from "next/dynamic";
 import React from "react";
-import { ResultCollection } from "@/components";
+// import { ResultCollection } from "@/components";
+const ResultCollection = dynamic(
+  () => import("@/components/renewal/ResultCollection"),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
 
 const Result = () => {
   return (

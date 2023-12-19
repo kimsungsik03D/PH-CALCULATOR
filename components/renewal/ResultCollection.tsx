@@ -2,16 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import {
-  fruit_1,
-  fruit_2,
-  fruit_3,
-  fruit_4,
-  fruit_5,
-  fruit_6,
-  fruit_7,
-  fruit_8,
-} from "@/images";
+import { fruit_1 } from "@/images";
 import { ResultType } from "@/types";
 
 const ResultCollection = () => {
@@ -50,11 +41,10 @@ const ResultCollection = () => {
               alt={"apple"}
               className="w-full h-[140px] rounded-lg shadow-lg object-fill"
               src={fruit_1}
+              placeholder="blur"
             />
           </div>
           <div className="p-3 h-auto flex w-full items-center overflow-hidden color-inherit subpixel-antialiased rounded-b-large text-small justify-between">
-            {/* <b>{item.title}</b>
-            <p className="text-default-500">{item.price}</p> */}
             <b>{item.device.name}</b>
             <p className="text-default-500">
               {totalPrice(index)}

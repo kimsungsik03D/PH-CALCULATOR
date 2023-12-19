@@ -1,4 +1,10 @@
-import { BillDesk } from "@/components";
+// import { BillDesk } from "@/components";
+import dynamic from "next/dynamic";
+
+const BillDesk = dynamic(() => import("@/components/renewal/BillDesk"), {
+  ssr: false,
+  loading: () => null,
+});
 
 const Reneal = () => {
   return (
