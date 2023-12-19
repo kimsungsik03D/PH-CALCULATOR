@@ -34,5 +34,9 @@ react-transition-group
 
 > https://reactcommunity.org/react-transition-group/transition
 
+최적화
+
+> https://velog.io/@ashekruu/Next.js%EC%95%B1-%EC%B5%9C%EC%A0%81%ED%99%94-%ED%95%B4%EB%B3%B4%EA%B8%B0
+
 </div>
 </details>
