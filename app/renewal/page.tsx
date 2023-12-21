@@ -1,12 +1,20 @@
 // import { BillDesk } from "@/components";
 import dynamic from "next/dynamic";
+import { fetchPaymentList, fetchDeviceList } from "@/api";
 
 const BillDesk = dynamic(() => import("@/components/renewal/BillDesk"), {
   ssr: false,
   loading: () => null,
 });
 
-const Reneal = () => {
+const Reneal = async () => {
+  const resultPaymentList = await fetchPaymentList(
+    "241e87cbaa4e47fb84741231b3f1d6df"
+  );
+  const resultDeviceList = await fetchDeviceList(
+    "f4b91506181d499faeae69c42f55421e"
+  );
+
   return (
     <div className="flex w-full h-screen items-center justify-center text-sm ">
       <div
@@ -14,7 +22,10 @@ const Reneal = () => {
         style={{ height: "500px", width: "450px" }}
       >
         <div className="text-xl">자급제 휴대폰 계산기</div>
-        <BillDesk />
+        <BillDesk
+          deviceList={resultDeviceList}
+          paymentList={resultPaymentList}
+        />
       </div>
     </div>
   );

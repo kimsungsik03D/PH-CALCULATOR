@@ -1,16 +1,15 @@
 "use client";
 import { ChangeEvent, useEffect } from "react";
 import QuestionLottie from "@/app/renewal/Lottie";
-import { device } from "@/constants";
-import { SelectDeviceProps } from "@/types";
+import { SelectDeviceProps, Device } from "@/types";
 import { handleSelectFindObject } from "@/common";
 
-const SelectDevice = ({ pageUp, setData }: SelectDeviceProps) => {
-  let data: any = { ...device[0] };
-  
+const SelectDevice = ({ pageUp, setData, deviceList }: SelectDeviceProps) => {
+  let data: any = { ...deviceList[0] };
+
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const targetValue = e.target.value;
-    data = { ...handleSelectFindObject(targetValue, device) };
+    data = { ...handleSelectFindObject(targetValue, deviceList) };
   };
 
   const onBtnClick = () => {
@@ -30,7 +29,7 @@ const SelectDevice = ({ pageUp, setData }: SelectDeviceProps) => {
           className="w-full h-full text-center rounded-lg"
           onChange={handleChange}
         >
-          {device.map((value, index) => (
+          {deviceList.map((value, index) => (
             <option key={index} value={value.key}>
               {value.name}
             </option>

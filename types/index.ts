@@ -67,10 +67,12 @@ export interface CommonProps {
 }
 export interface SelectDeviceProps extends CommonProps {
   setData: (data: any) => void;
+  deviceList: Device[];
 }
 
 export interface SelectPaymentProps extends CommonProps {
   setData: (data: any) => void;
+  paymentList: Payment[];
 }
 export interface SelectCoponProps extends CommonProps {
   setData: (data: any) => void;

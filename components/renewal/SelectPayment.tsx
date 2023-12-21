@@ -5,8 +5,12 @@ import { payment, paymentSaleLate } from "@/constants";
 import { SelectPaymentProps, Payment } from "@/types";
 import { handleSelectFindObject } from "@/common";
 
-const SelectPayment = ({ pageUp, setData }: SelectPaymentProps) => {
-  let paymentData: any = { ...payment[0], ...paymentSaleLate[0] };
+const SelectPayment = ({
+  pageUp,
+  setData,
+  paymentList,
+}: SelectPaymentProps) => {
+  let paymentData: any = { ...paymentList[0], ...paymentSaleLate[0] };
   // useEffect(() => {
   //   setData({ payment: paymentData });
   // }, []);
@@ -17,7 +21,7 @@ const SelectPayment = ({ pageUp, setData }: SelectPaymentProps) => {
 
     const data = handleSelectFindObject(
       targetValue,
-      targetName === "paymentName" ? payment : paymentSaleLate
+      targetName === "paymentName" ? paymentList : paymentSaleLate
     );
     paymentData = { ...paymentData, ...data };
   };
@@ -35,7 +39,7 @@ const SelectPayment = ({ pageUp, setData }: SelectPaymentProps) => {
           className="w-full h-full text-center rounded-lg"
           onChange={handleChange}
         >
-          {payment.map((value, index) => (
+          {paymentList.map((value, index) => (
             <option key={index} value={value.key}>
               {value.name}
             </option>

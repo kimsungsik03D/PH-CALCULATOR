@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 
 const Result = dynamic(() => import("@/components/renewal/Result"), {
@@ -56,7 +56,7 @@ const transitionStyles: TransitionStylesType = {
   exited: { opacity: 0 },
 };
 
-const BillDesk = () => {
+const BillDesk = ({ deviceList, paymentList }: any) => {
   const nodeRef = useRef(null);
 
   const [page, setPage] = useState<number>(1);
@@ -76,6 +76,10 @@ const BillDesk = () => {
     },
     sale: { saleInfo: "", salePrice: "" },
   });
+
+  // useEffect(() => {
+  //   pageUp(1);
+  // }, []);
 
   const pageUp = (nextPage: number) => {
     setFade(false);
@@ -108,11 +112,19 @@ const BillDesk = () => {
             <div className="text-2xl my-2">{title[page - 1]}</div>
 
             {page == 1 && (
-              <SelectDevice pageUp={pageUp} setData={handleBillData} />
+              <SelectDevice
+                deviceList={deviceList}
+                pageUp={pageUp}
+                setData={handleBillData}
+              />
             )}
             {page == 2 && <YesOrNo pageUp={pageUp} />}
             {page == 3 && (
-              <SelectPayment pageUp={pageUp} setData={handleBillData} />
+              <SelectPayment
+                paymentList={paymentList}
+                pageUp={pageUp}
+                setData={handleBillData}
+              />
             )}
             {page == 4 && <YesOrNo pageUp={pageUp} type="sale" />}
             {page == 5 && (
