@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { fetchPaymentList, fetchDeviceList } from "@/api";
 
 const BillDesk = dynamic(() => import("@/components/renewal/BillDesk"), {
-  ssr: false,
+  ssr: true,
   loading: () => null,
 });
 

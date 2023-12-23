@@ -14,7 +14,7 @@ const SelectCopon = dynamic(() => import("@/components/renewal/SelectCopon"), {
 const SelectDevice = dynamic(
   () => import("@/components/renewal/SelectDevice"),
   {
-    ssr: false,
+    ssr: true,
     loading: () => null,
   }
 );
