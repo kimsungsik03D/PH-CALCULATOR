@@ -9,9 +9,7 @@ const ResultCollection = () => {
   const [items, setItems] = useState<ResultType[]>([]);
 
   useEffect(() => {
-    const result: string | null = localStorage.getItem("result");
-    const item = JSON.parse(result ?? "[{}]");
-    setItems(item.reverse());
+    fetchResultData();
   }, []);
 
   const totalPrice = (index: number): number => {
@@ -27,11 +25,23 @@ const ResultCollection = () => {
     return totalPrice / 10000;
   };
 
+  const fetchResultData = () => {
+    const result: string | null = localStorage.getItem("result");
+    const item = JSON.parse(result ?? "[{}]");
+    setItems(item.reverse());
+  };
+
+  const removeItem = (itemIndex: number) => {
+    const removeItems = items.filter((value, index) => index != itemIndex);
+    setItems(removeItems);
+    localStorage.setItem("result", JSON.stringify(removeItems.reverse()));
+  };
+
   return (
     <>
       {items.map((item, index) => (
         <div
-          className="border shadow-sm rounded-lg hover:scale-95 transition-all"
+          className="border shadow-sm rounded-lg hover:scale-95 transition-all relative"
           key={index}
         >
           <div className="overflow-visible p-0">
@@ -51,6 +61,13 @@ const ResultCollection = () => {
               만원
             </p>
           </div>
+          <button
+            className="bg-red-400 text-white rounded-full w-6 h-6 text-center absolute top-1 right-1 hover:bg-red-500"
+            id={index.toString()}
+            onClick={() => removeItem(index)}
+          >
+            -
+          </button>
         </div>
       ))}
     </>
