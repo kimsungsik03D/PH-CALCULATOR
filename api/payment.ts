@@ -17,8 +17,9 @@ export const fetchPaymentList = async (databases: string) => {
       options
     );
     const resResult = await res.json();
+    const { results } = resResult;
 
-    const result = resResult.results.map((value: any) => {
+    const result = results.map((value: any) => {
       return {
         key: value.properties.key.rich_text[0].plain_text,
         name: value.properties.name.rich_text[0].plain_text,
