@@ -22,6 +22,7 @@ export const fetchDeviceList = async (databases: string) => {
         key: value.properties.key.rich_text[0].plain_text,
         name: value.properties.name.rich_text[0].plain_text,
         price: value.properties.price.number,
+        url: value.properties.image.url,
       };
     });
 

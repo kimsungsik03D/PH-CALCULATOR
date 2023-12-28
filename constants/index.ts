@@ -85,19 +85,29 @@ export const title: string[] = [
 ];
 
 export const device: Device[] = [
-  { key: "ip15128", name: "IPhone 15 128GB", price: 1250000 },
-  { key: "ip15256", name: "IPhone 15 256GB", price: 1400000 },
-  { key: "ip15512", name: "IPhone 15 512GB", price: 1700000 },
-  { key: "ip15pl128", name: "IPhone 15 plus 128GB", price: 1350000 },
-  { key: "ip15pl256", name: "IPhone 15 plus 256GB", price: 1500000 },
-  { key: "ip15pl512", name: "IPhone 15 plus 512GB", price: 1800000 },
-  { key: "ip15pr128", name: "IPhone 15 Pro 128GB", price: 1550000 },
-  { key: "ip15pr256", name: "IPhone 15 Pro 256GB", price: 1700000 },
-  { key: "ip15pr512", name: "IPhone 15 Pro 512GB", price: 2000000 },
-  { key: "ip15p1000", name: "IPhone 15 Pro 1TB", price: 2300000 },
-  { key: "ip15pm256", name: "IPhone 15 Pro max 256GB", price: 1900000 },
-  { key: "ip15pm512", name: "IPhone 15 Pro max 512GB", price: 2200000 },
-  { key: "ip15pm1000", name: "IPhone 15 Pro max 1TB", price: 2500000 },
+  { key: "ip15128", name: "IPhone 15 128GB", price: 1250000, url: "" },
+  { key: "ip15256", name: "IPhone 15 256GB", price: 1400000, url: "" },
+  { key: "ip15512", name: "IPhone 15 512GB", price: 1700000, url: "" },
+  { key: "ip15pl128", name: "IPhone 15 plus 128GB", price: 1350000, url: "" },
+  { key: "ip15pl256", name: "IPhone 15 plus 256GB", price: 1500000, url: "" },
+  { key: "ip15pl512", name: "IPhone 15 plus 512GB", price: 1800000, url: "" },
+  { key: "ip15pr128", name: "IPhone 15 Pro 128GB", price: 1550000, url: "" },
+  { key: "ip15pr256", name: "IPhone 15 Pro 256GB", price: 1700000, url: "" },
+  { key: "ip15pr512", name: "IPhone 15 Pro 512GB", price: 2000000, url: "" },
+  { key: "ip15p1000", name: "IPhone 15 Pro 1TB", price: 2300000, url: "" },
+  {
+    key: "ip15pm256",
+    name: "IPhone 15 Pro max 256GB",
+    price: 1900000,
+    url: "",
+  },
+  {
+    key: "ip15pm512",
+    name: "IPhone 15 Pro max 512GB",
+    price: 2200000,
+    url: "",
+  },
+  { key: "ip15pm1000", name: "IPhone 15 Pro max 1TB", price: 2500000, url: "" },
 ];
 
 export const payment: Payment[] = [
