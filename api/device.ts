@@ -12,11 +12,20 @@ const options = { method: "POST", headers, next: { revalidate: 0 } };
 
 export const fetchDeviceList = async (databases: string) => {
   try {
+    const body = {
+      sorts: [
+        {
+          property: "index",
+          direction: "ascending",
+        },
+      ],
+    };
     const res = await fetch(
       `https://api.notion.com/v1/databases/${databases}/query`,
-      options
+      { ...options, body: JSON.stringify(body) }
     );
     const resResult = await res.json();
+
     const result = resResult.results.map((value: any) => {
       return {
         key: value.properties.key.rich_text[0].plain_text,
