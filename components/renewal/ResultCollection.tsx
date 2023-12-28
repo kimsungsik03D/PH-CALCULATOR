@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { fruit_1 } from "@/images";
 import { ResultType } from "@/types";
+import { redirect } from "next/navigation";
 
 const ResultCollection = () => {
   const [items, setItems] = useState<ResultType[]>([]);
@@ -28,6 +29,10 @@ const ResultCollection = () => {
   const fetchResultData = () => {
     const result: string | null = localStorage.getItem("result");
     const item = JSON.parse(result ?? "[{}]");
+    if (item.length == 1 && !item[0].device) {
+      redirect("/renewal");
+    }
+
     setItems(item.reverse());
   };
 
