@@ -38,12 +38,20 @@ const SelectDevice = ({ pageUp, setData, deviceList }: SelectDeviceProps) => {
     setTimeout(() => {
       setFade(true);
       setLoad(true);
-    }, 5000);
+    }, 3000);
   }, []);
 
   const handleChange = async (e: ChangeEvent<HTMLSelectElement>) => {
     const targetValue = e.target.value;
-    setDeviceData({ ...handleSelectFindObject(targetValue, deviceList) });
+
+    setTimeout(() => {
+      setFade(false);
+    }, 1000);
+    setTimeout(() => {
+      setFade(true);
+      setDeviceData({ ...handleSelectFindObject(targetValue, deviceList) });
+      setLoad(true);
+    }, 3000);
   };
 
   const onBtnClick = () => {
