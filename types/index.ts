@@ -92,6 +92,7 @@ export interface Device {
   key: string;
   name: string;
   price: number;
+  url: string;
 }
 export interface Payment {
   [key: string]: string | number | undefined;

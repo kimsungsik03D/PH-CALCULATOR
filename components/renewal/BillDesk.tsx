@@ -67,6 +67,7 @@ const BillDesk = ({ deviceList, paymentList }: any) => {
       key: "",
       name: "",
       price: 0,
+      url: "",
     },
     payment: {
       key: "",
