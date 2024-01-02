@@ -7,6 +7,28 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "자급제 요금 계산기",
   description: "자급제 휴대폰의 가격과 할인정보를 입력하여 계산할 수 있다.",
+  openGraph: {
+    title: "자급제 요금 계산기",
+    description: "자급제 휴대폰의 가격과 할인정보를 입력하여 계산할 수 있다.",
+    url: "https://ph-calculator-ll2s.vercel.app",
+    siteName: "Next.js",
+    images: [
+      {
+        url: "https://ph-calculator-ll2s.vercel.app/main-image.png",
+        width: 800,
+        height: 600,
+        alt: "phone calculate",
+      },
+      // {
+      //   url: "https://nextjs.org/og-alt.png",
+      //   width: 1800,
+      //   height: 1600,
+      //   alt: "My custom alt",
+      // },
+    ],
+    locale: "en-KR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
