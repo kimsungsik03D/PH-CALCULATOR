@@ -7,6 +7,8 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "자급제 요금 계산기",
   description: "자급제 휴대폰의 가격과 할인정보를 입력하여 계산할 수 있다.",
+  // naverSiteVerification:"",
+  // googleSiteVerification:"",
   openGraph: {
     title: "자급제 요금 계산기",
     description: "자급제 휴대폰의 가격과 할인정보를 입력하여 계산할 수 있다.",
@@ -28,6 +30,9 @@ export const metadata: Metadata = {
     ],
     locale: "en-KR",
     type: "website",
+  },
+  verification: {
+    google: "9AIxvK5q5GCzD_WLMmhs53ZVsYORKaby6aluUQzEqcI",
   },
 };
 
