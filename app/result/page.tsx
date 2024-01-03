@@ -12,7 +12,7 @@ const ResultCollection = dynamic(
 
 const Result = () => {
   return (
-    <div className="gap-2 grid grid-cols-2 sm:grid-cols-4 mt-20">
+    <div className="mx-24 gap-2 grid grid-cols-2 sm:grid-cols-4 mt-20">
       <ResultCollection />
     </div>
     // </div>
