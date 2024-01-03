@@ -12,6 +12,7 @@ import SelectPayment from "./renewal/SelectPayment";
 import SelectCopon from "./renewal/SelectCopon";
 import Result from "./renewal/Result";
 import ResultCollection from "./renewal/ResultCollection";
+import Nav from "./Nav";
 
 export {
   Button,
@@ -27,4 +28,5 @@ export {
   SelectCopon,
   Result,
   ResultCollection,
+  Nav,
 };
