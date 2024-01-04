@@ -8,15 +8,17 @@ const Input = ({
   labelClass,
   inputWidth,
   maxMessage,
-  value,
   onChange,
   ...props
 }: InputProps) => {
-  const [enteredNum, setEnterdNum] = useState(value);
+  const [enteredNum, setEnterdNum] = useState<
+    string | number | readonly string[] | undefined
+  >("");
+  const input = useRef(null);
 
   useEffect(() => {
-    setEnterdNum(value);
-  }, [value]);
+    setEnterdNum(props.value);
+  }, [props.value]);
 
   // onInput Func
   const changeEnteredNum = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,6 +37,7 @@ const Input = ({
   // only Current Input Change handler
   const onChangeEnteredCurrency = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, selectionEnd, setSelectionRange } = e.target;
+
     const { max } = props;
     if (max && max < Number(value)) {
       alert(maxMessage);
@@ -46,10 +49,21 @@ const Input = ({
       .replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
 
     const startPosition = selectionEnd && value.length - selectionEnd;
-    setEnterdNum(repValue);
 
-    const len = Math.max(value.length - (startPosition || 0), 0);
-    // if (value.lengt
+    // setEnterdNum(repValue);
+    e.target.value = repValue;
+
+    let cursorPoint = Math.max(value.length - (startPosition || 0), 0);
+
+    if (value.length != selectionEnd) {
+      console.log("@");
+      setTimeout(() => {
+        if (selectionEnd == 0) {
+          cursorPoint = 1;
+        }
+        e.target.setSelectionRange(cursorPoint, cursorPoint);
+      }, 0); // 1초
+    }
 
     if (onChange) {
       onChange(e);
@@ -61,13 +75,14 @@ const Input = ({
       <label className={`${labelClass}`}>
         {label}
         <input
+          ref={input}
           className={`custom-input ${inputWidth ? inputWidth : ""} ${
             props.type == "current" ? "text-right" : ""
           }
         `}
           type={props.type && "text"}
           {...props}
-          value={enteredNum}
+          value={props.value}
           onInput={changeEnteredNum}
         />
       </label>
