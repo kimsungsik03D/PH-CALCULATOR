@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 body {
+  /* @apply bg-[#fff1da]; */
   font-size: 15px;
 }
 

@@ -55,8 +55,8 @@ const ResultCollection = () => {
               height={300}
               alt={"apple"}
               className="w-full h-[140px] rounded-lg shadow-lg object-fill"
-              src={fruit_1}
-              placeholder="blur"
+              src={item.device.url ?? fruit_1}
+              // placeholder="blur"
             />
           </div>
           <div className="p-3 h-auto flex w-full items-center overflow-hidden color-inherit subpixel-antialiased rounded-b-large text-small justify-between">

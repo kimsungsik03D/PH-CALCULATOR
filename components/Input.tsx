@@ -6,6 +6,7 @@ import "./style.css";
 const Input = ({
   label,
   labelClass,
+  className,
   inputWidth,
   maxMessage,
   onChange,
@@ -31,7 +32,10 @@ const Input = ({
 
   // other Input Change handler
   const onChangeEnteredText = (e: ChangeEvent<HTMLInputElement>) => {
-    setEnterdNum(e.target.value);
+    if (onChange) {
+      onChange(e);
+    }
+    // setEnterdNum(e.target.value);
   };
 
   // only Current Input Change handler
@@ -56,7 +60,6 @@ const Input = ({
     let cursorPoint = Math.max(value.length - (startPosition || 0), 0);
 
     if (value.length != selectionEnd) {
-      console.log("@");
       setTimeout(() => {
         if (selectionEnd == 0) {
           cursorPoint = 1;
@@ -76,7 +79,7 @@ const Input = ({
         {label}
         <input
           ref={input}
-          className={`custom-input ${inputWidth ? inputWidth : ""} ${
+          className={`custom-input ${className} ${
             props.type == "current" ? "text-right" : ""
           }
         `}
