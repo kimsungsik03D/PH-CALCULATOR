@@ -1,7 +1,15 @@
+"use client";
+
+import { useEffect } from "react";
 import { ResultProps } from "@/types";
-import { resultData } from "@/constants";
+import { setLocalStorageResult } from "@/common";
 
 const Result = ({ data }: ResultProps) => {
+  useEffect(() => {
+    const item = setLocalStorageResult(data);
+    localStorage.setItem("result", JSON.stringify(item));
+  }, [data]);
+
   const isPaymentInfo = data.payment.name && data.payment.late;
   const isSaleInfo = data.sale.saleInfo && data.sale.salePrice;
 

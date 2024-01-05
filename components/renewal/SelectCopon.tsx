@@ -1,35 +1,44 @@
 "use client";
 
 import { SelectCoponProps, Sale2 } from "@/types";
-import { ChangeEvent, InputHTMLAttributes } from "react";
+import dynamic from "next/dynamic";
+import { ChangeEvent } from "react";
+const Input = dynamic(() => import("@/components/Input"), {
+  ssr: true,
+  loading: () => null,
+});
 
 const SelectCopon = ({ pageUp, setData }: SelectCoponProps) => {
-  let data: Sale2 = { saleInfo: "", salePrice: "" };
+  let data: Sale2 = { saleInfo: "", salePrice: 0 };
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.value) {
       data[e.target.name] = e.target.value;
     }
   };
   const onBtnClick = () => {
+    const salePrice = data.salePrice.toString();
+    data.salePrice = salePrice.replaceAll(",", "");
+
     setData({ sale: data });
     pageUp(6);
   };
   return (
     <div className="w-full flex flex-col items-center">
       <div className="border border-neutral-300 rounded-lg w-11/12 h-12 mt-12 mb-9">
-        <input
+        <Input
           name="saleInfo"
           id="saleInfo"
-          className="w-full h-full rounded-lg pl-3"
+          className="pl-3"
           placeholder="할인 항목"
           onChange={handleChangeInput}
         />
       </div>
       <div className="border border-neutral-300 rounded-lg w-11/12 h-12 mt-5 mb-9">
-        <input
+        <Input
           name="salePrice"
           id="salePrice"
-          className="w-full h-full rounded-lg pl-3"
+          type="current"
+          className="pr-3"
           placeholder="할인 금액을 입력해주세요."
           onChange={handleChangeInput}
         />

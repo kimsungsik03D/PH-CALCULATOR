@@ -87,11 +87,6 @@ const BillDesk = ({ deviceList, paymentList }: any) => {
 
     setTimeout(() => {
       setPage(nextPage);
-      if (nextPage === 6) {
-        // localStorage의 데이터 저장
-        const item = setLocalStorageResult(bill);
-        localStorage.setItem("result", JSON.stringify(item));
-      }
       setFade(true);
     }, 1000);
   };

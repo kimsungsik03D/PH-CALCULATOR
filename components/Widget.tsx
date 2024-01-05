@@ -14,7 +14,7 @@ const Widget = () => {
   // 컴포넌트 데이터 handler
   const onValue = (e: ChangeEvent<HTMLInputElement>) => {
     setCurruntValue(e.target.value);
-    console.log("onValue : ", e.target.value);
+    // console.log("onValue : ", e.target.value);
   };
 
   // SelectBox option data
