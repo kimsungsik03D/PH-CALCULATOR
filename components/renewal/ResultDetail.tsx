@@ -26,7 +26,11 @@ const ResultDetail = ({ data }: { data: ResultType }) => {
         <div className="flex items-center  justify-between">
           <b>{data.payment.name}</b>
           <p className="text-default-500">
-            -{Number(data.payment.late ?? 0) * 0.01 * data.device.price}원
+            -
+            {Math.floor(
+              Number(data.payment.late ?? 0) * 0.01 * data.device.price
+            )}
+            원
           </p>
         </div>
       )}

@@ -3,10 +3,13 @@
 import { useState, useEffect } from "react";
 
 import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
+
 import dynamic from "next/dynamic";
 import { fruit_1 } from "@/images";
 import { ResultType } from "@/types";
 import { redirect } from "next/navigation";
+
 const ResultDetail = dynamic(
   () => import("@/components/renewal/ResultDetail"),
   {
@@ -16,12 +19,27 @@ const ResultDetail = dynamic(
 );
 
 const ResultCollection = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [items, setItems] = useState<ResultType[]>([]);
   const [isClick, setIsClick] = useState<null | number>(null);
-  const [isPriceSort, setisPriceSort] = useState(true);
+  const [isPriceSort, setIsPriceSort] = useState(true);
 
   useEffect(() => {
-    fetchResultData();
+    const data = fetchResultData();
+
+    const parmasPriceSort = searchParams.get("price");
+    if (parmasPriceSort) {
+      if (parmasPriceSort == "price_low") {
+        priceSort(data);
+      } else if (parmasPriceSort == "price_high") {
+        priceSort(data, false);
+      }
+    } else {
+      console.log("2");
+      setItems(data);
+    }
   }, []);
 
   const totalPrice = (item: ResultType): number => {
@@ -34,14 +52,14 @@ const ResultCollection = () => {
     return totalPrice / 10000;
   };
 
-  const fetchResultData = () => {
+  const fetchResultData = (): ResultType[] => {
     const result: string | null = localStorage.getItem("result");
     const item = JSON.parse(result ?? "[{}]");
     if (item.length == 1 && !item[0].device) {
       redirect("/renewal");
     }
 
-    setItems(item);
+    return item;
   };
 
   const removeItem = (itemIndex: number) => {
@@ -63,17 +81,36 @@ const ResultCollection = () => {
     console.log("dateSort");
   };
 
-  const priceSort = () => {
-    const tempItems = items;
+  const handleSortButton = () => {
+    routeQuery("set", "price", `${isPriceSort ? "price_low" : "price_high"}`);
+
+    priceSort(items);
+  };
+
+  const priceSort = (ArrayItem: ResultType[], sort: boolean = isPriceSort) => {
+    const tempItems = ArrayItem;
 
     const sortTemp = tempItems.sort((value1, value2) => {
-      return isPriceSort
+      return sort
         ? totalPrice(value1) - totalPrice(value2)
         : totalPrice(value2) - totalPrice(value1);
     });
 
-    setisPriceSort(!isPriceSort);
+    setIsPriceSort(!sort);
     setItems([...sortTemp]);
+  };
+
+  const routeQuery = (type: string, key: string, value: string) => {
+    const params = new URLSearchParams(window.location.search);
+    if (type == "set") {
+      params.set(key, value);
+    } else {
+      params.delete(key);
+    }
+
+    const newPathname = `${window.location.pathname}?${params.toString()}`;
+
+    router.push(newPathname, { scroll: false });
   };
 
   return (
@@ -82,7 +119,7 @@ const ResultCollection = () => {
         <button className="mx-3" onClick={dateSort}>
           최신순
         </button>
-        <button className="mx-3" onClick={priceSort}>
+        <button className="mx-3" onClick={handleSortButton}>
           금액순
         </button>
         <select
