@@ -86,6 +86,7 @@ export interface ResultType {
   device: Device;
   payment: Payment;
   sale: Sale2;
+  date: Date | null;
 }
 
 export interface Device {

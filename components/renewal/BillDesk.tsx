@@ -76,6 +76,7 @@ const BillDesk = ({ deviceList, paymentList }: any) => {
       lateName: "",
     },
     sale: { saleInfo: "", salePrice: "" },
+    date: null,
   });
 
   // useEffect(() => {
@@ -91,7 +92,7 @@ const BillDesk = ({ deviceList, paymentList }: any) => {
     }, 1000);
   };
   const handleBillData = (data: Device | Payment | Sale2) => {
-    setBill({ ...bill, ...data });
+    setBill({ ...bill, ...data, date: new Date() });
   };
   return (
     <Transition nodeRef={nodeRef} in={fade} timeout={duration}>
@@ -126,7 +127,7 @@ const BillDesk = ({ deviceList, paymentList }: any) => {
             {page == 5 && (
               <SelectCopon pageUp={pageUp} setData={handleBillData} />
             )}
-            {page == 6 && <Result data={bill} />}
+            {page == 6 && fade && <Result data={bill} />}
           </div>
         );
       }}
