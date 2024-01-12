@@ -102,10 +102,10 @@ const SelectDevice = ({ pageUp, setData, deviceList }: SelectDeviceProps) => {
             </div>
             <div className="flex justify-between w-11/12">
               <p className="flex text-xs my-auto">
-                찾는 기기가 없나요?&nbsp;{" "}
+                {/* 찾는 기기가 없나요?&nbsp;{" "}
                 <a className="text-bold text-[#1A73E8] font-black">
                   여기를 눌러 추가하세요.
-                </a>
+                </a> */}
               </p>
               <button
                 className="bg-[#1A73E8] text-white px-[20px] py-[8px] rounded-lg"
