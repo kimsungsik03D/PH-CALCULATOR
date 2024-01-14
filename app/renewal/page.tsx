@@ -16,12 +16,12 @@ const Reneal = async () => {
   );
 
   return (
-    <div className="flex w-full h-screen items-center justify-center text-sm ">
+    <div className="flex w-full h-screen items-center justify-center text-sm">
       <div
-        className="flex flex-col  px-8 py-7 items-center border border-neutral-300 rounded-lg"
-        style={{ height: "500px", width: "450px" }}
+        className="flex flex-col sm:w-[450px] w-[354px] h-[500px] px-8 py-7 items-center border border-neutral-300 rounded-lg mt-[-150px]"
+        // style={{ height: "500px", width: "450px" }}
       >
-        <div className="text-xl">자급제 휴대폰 계산기</div>
+        <div className="text-sm sm:text-xl">자급제 휴대폰 계산기</div>
         <BillDesk
           deviceList={resultDeviceList}
           paymentList={resultPaymentList}

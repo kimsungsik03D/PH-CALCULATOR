@@ -32,7 +32,7 @@ const SelectPayment = ({
   };
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="border border-neutral-300 rounded-lg w-11/12 h-12 mt-9 mb-9">
+      <div className="border border-neutral-300 rounded-lg w-11/12 h-12 mt-16 mb-16">
         <select
           name="paymentName"
           id="paymentName"
@@ -60,7 +60,7 @@ const SelectPayment = ({
           ))}
         </select>
       </div>
-      <div className="flex justify-between w-11/12 mt-24">
+      <div className="flex justify-between w-11/12 mt-14">
         <p className="flex text-xs my-auto">
           {/* 찾는 카드사가 없나요?&nbsp;{" "}
           <a className="text-bold text-[#1A73E8] font-black">

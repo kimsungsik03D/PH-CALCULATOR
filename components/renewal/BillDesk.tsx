@@ -106,7 +106,7 @@ const BillDesk = ({ deviceList, paymentList }: any) => {
               ...transitionStyles[state],
             }}
           >
-            <div className="text-2xl my-2">{title[page - 1]}</div>
+            <div className="text-xl sm:text-2xl my-2">{title[page - 1]}</div>
 
             {page == 1 && (
               <SelectDevice

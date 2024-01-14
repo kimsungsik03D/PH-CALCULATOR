@@ -115,7 +115,7 @@ const ResultCollection = () => {
 
   return (
     <>
-      <div className="flex justify-end mx-20">
+      <div className="flex justify-end md:justify-center mt-6 mx-20">
         <button className="mx-3" onClick={dateSort}>
           최신순
         </button>
@@ -132,9 +132,12 @@ const ResultCollection = () => {
           <option value="ip15pro">아이폰15pro</option>
         </select>
       </div>
-      <div className="flex mt-10 mx-20 gap-2 flex-wrap">
+      <div className="flex mt-10 mx-20 md:mx-2 gap-2 flex-wrap">
         {items.map((item, index) => (
-          <div className="w-[24.3%] h-[188.5px] border rounded-lg" key={index}>
+          <div
+            className="w-[24.3%] sm:w-[48.3%] md:w-[32.3%] h-[188.5px] sm:h-[189.5px] border rounded-lg"
+            key={index}
+          >
             <div
               className="border shadow-sm rounded-lg transition-all relative"
               onClick={() => handlerItemClick(index)}
@@ -151,7 +154,7 @@ const ResultCollection = () => {
               </div>
               <div className="p-3 h-auto flex w-full items-center overflow-hidden color-inherit subpixel-antialiased rounded-b-large text-small justify-between">
                 <b>{item.device.name}</b>
-                <p className="text-default-500">
+                <p className="text-default-500 w-[31%] text-right">
                   {totalPrice(item)}
                   만원
                 </p>

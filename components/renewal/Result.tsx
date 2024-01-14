@@ -67,10 +67,12 @@ const Result = ({ data }: ResultProps) => {
       )}
 
       <div className="flex flex-col items-end w-full  my-7">
-        <div className="flex">
-          <div>할인총액 : </div>
-          <div className="w-24 text-right">-{totalDiscount}원</div>
-        </div>
+        {totalDiscount != 0 && (
+          <div className="flex">
+            <div>할인총액 : </div>
+            <div className="w-24 text-right">-{totalDiscount}원</div>
+          </div>
+        )}
         <div className="flex">
           <div>최종금액 : </div>
           <div className="w-24 text-right">{totalPrice}원</div>
